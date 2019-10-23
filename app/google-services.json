@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "198384712708",
+    "firebase_url": "https://lesfuribardsdelacuisine.firebaseio.com",
+    "project_id": "lesfuribardsdelacuisine",
+    "storage_bucket": "lesfuribardsdelacuisine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198384712708:android:60548955a47fd811090951",
+        "android_client_info": {
+          "package_name": "perso.myapplicationL"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198384712708-fbh6bjrf29sspfk6a0efd73dpn0od3jd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "perso.myapplicationL",
+            "certificate_hash": "a9e3c53c7a9a7894954297032901125fa7aa37ab"
+          }
+        },
+        {
+          "client_id": "198384712708-014i09k6glh6nmkrhqv68olp8vqmp6ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmcXEjBwzZ3o1-yeMI2IL2FOyo-3eakWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198384712708-014i09k6glh6nmkrhqv68olp8vqmp6ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
