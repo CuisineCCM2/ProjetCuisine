@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import perso.myapplicationL.ui.main.FirebaseConnection;
 import perso.myapplicationL.ui.main.SectionsPagerAdapter;
 
 public class DashBoardActivity extends AppCompatActivity {
@@ -26,5 +27,7 @@ public class DashBoardActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+        FirebaseConnection.init();
+        //FirebaseConnection
     }
 }
