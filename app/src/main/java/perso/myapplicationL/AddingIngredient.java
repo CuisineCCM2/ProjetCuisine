@@ -59,29 +59,32 @@ public class AddingIngredient extends Fragment {
             }
         });
 
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String ingredientcontent = ingredient.getText().toString();
+                String quantitycontent = quantity.getText().toString();
+
+                if (TextUtils.isEmpty(ingredientcontent)) {
+                    Toast.makeText(getContext(), "Merci de rentrer un ingrédient", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(quantitycontent)) {
+                    Toast.makeText(getContext(), "Merci de rentrer une quantité", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
+                items.add(ingredientcontent + " : " + quantitycontent  );
+
+                RecyclerSimpleViewAdapter adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
+                myRecyclerView.setAdapter(adapter);
+                myRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                Toast.makeText(getContext(), "Ligne ajoutée : " + ingredientcontent + " " + quantitycontent, Toast.LENGTH_LONG).show();
+            }
+        });
         return root;
     }
 
-    public void ingr(View view) {
-
-        String ingredientcontent = ingredient.getText().toString();
-        String quantitycontent = quantity.getText().toString();
-
-        if (TextUtils.isEmpty(ingredientcontent)) {
-            Toast.makeText(getContext(), "Merci de rentrer un ingrédient", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (TextUtils.isEmpty(quantitycontent)) {
-            Toast.makeText(getContext(), "Merci de rentrer une quantité", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-
-        items.add(ingredientcontent + " : " + quantitycontent  );
-
-        RecyclerSimpleViewAdapter adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
-        myRecyclerView.setAdapter(adapter);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        Toast.makeText(getContext(), "Ligne ajoutée : " + ingredientcontent + " " + quantitycontent, Toast.LENGTH_LONG).show();
-    }
 }
