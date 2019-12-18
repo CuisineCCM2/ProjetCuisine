@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
+import perso.myapplicationL.AddingIngredient;
 import perso.myapplicationL.HistoryList;
 import perso.myapplicationL.R;
 import perso.myapplicationL.RecipeList;
@@ -30,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
 
         fragments.add(new HistoryList());
-//        fragments.add(new ContactsActivity());
+        fragments.add(new AddingIngredient());
     }
 
     @Override

@@ -12,13 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShareNoteActivity"></activity>
+        <activity android:name=".AddingFilter"></activity>
+        <activity android:name=".RecyclerSimpleViewAdapter" />
+        <activity android:name=".AddingIngredient" />
+        <activity android:name=".ShareNoteActivity" />
         <activity
             android:name=".DashBoardActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_dash_board"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
