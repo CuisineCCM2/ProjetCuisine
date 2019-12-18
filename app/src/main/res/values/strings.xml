@@ -4,6 +4,7 @@
     <string name="tab_text_1">Historique</string>
     <string name="tab_text_2">Je me lance !</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
+    <string name="oven_api_key">vU231JWNs6s7Pb5K99lBSt1NpBPGr6Z7</string>
     <string-array name="array_quantities">
         <item>Unités</item>
         <item>Kg</item>
