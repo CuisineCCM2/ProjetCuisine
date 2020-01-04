@@ -43,4 +43,18 @@
         android:layout_weight="1"
         android:text="Ajouter" />
 
+    <Button
+        android:id="@+id/btnaddrecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="AJOUTE TA RECETTE !" />
+
+    <Button
+        android:id="@+id/btn_deconnexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Déconnexion" />
+
 </LinearLayout>

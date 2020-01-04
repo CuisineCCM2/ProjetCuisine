@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:entries="@array/array_quantities"/>
+            android:entries="@array/array_quantities" />
 
         <ImageButton
             android:id="@+id/id_add"
@@ -57,8 +57,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/id_recyclerView"
