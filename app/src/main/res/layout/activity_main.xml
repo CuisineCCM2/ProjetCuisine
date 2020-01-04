@@ -44,4 +44,12 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/dragoncuisine"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>

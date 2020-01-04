@@ -19,7 +19,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Vous avez déjà cuisiner"
+        android:text="Vous avez déjà cuisiné"
         android:textAlignment="center"
         android:textColor="#009688"
         android:textSize="36sp"

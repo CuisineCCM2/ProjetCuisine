@@ -4,7 +4,9 @@
     package="perso.myapplicationL">
 
     <dist:module dist:instant="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddingFilter"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".AddingFilter" />
         <activity android:name=".RecyclerSimpleViewAdapter" />
         <activity android:name=".AddingIngredient" />
         <activity android:name=".ShareNoteActivity" />
