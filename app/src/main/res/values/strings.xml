@@ -5,6 +5,10 @@
     <string name="tab_text_2">Je me lance !</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="oven_api_key">vU231JWNs6s7Pb5K99lBSt1NpBPGr6Z7</string>
+    <string name="login_successful">Login successful!</string>
+    <string name="login_enter_email">Please enter email...</string>
+    <string name="login_enter_password">Please enter password!</string>
+    <string name="login_failed">Login failed! Please try again later</string>
     <string-array name="array_quantities">
         <item>Unités</item>
         <item>Kg</item>

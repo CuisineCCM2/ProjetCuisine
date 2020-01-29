@@ -1,15 +1,21 @@
 package perso.myapplicationL;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginBtn, registerBtn;
     private ProgressBar progressBar;
     public static String email;
+
 
     private FirebaseAuth mAuth;
     @Override
@@ -59,30 +66,66 @@ public class MainActivity extends AppCompatActivity {
         password = passwordTV.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.login_enter_email), Toast.LENGTH_LONG).show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.login_enter_password), Toast.LENGTH_LONG).show();
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        if (isNetworkAvailable() == true) {
+        //    Toast.makeText(getApplicationContext(),"Connecté",Toast.LENGTH_SHORT).show();
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), getString(R.string.login_successful), Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                                Intent intent = new Intent(MainActivity.this, DashBoardActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), getString(R.string.login_failed), Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+                    });
+        } else {
+            // créer la base sqllite, et si déja existante juste le connecté et récupérer
+         //   Toast.makeText(getApplicationContext(),"Pas connecté",Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder monBuilder = new AlertDialog.Builder(this);
+            TextView textView = new TextView(this);
+            textView.setText("\n  Oups Vous n'avez pas internet ! " +
+                    "\n  Voulez-vous continuer en mode hors connexion ? ");
+            monBuilder.setCustomTitle(textView);
+            monBuilder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
-                    Intent intent = new Intent(MainActivity.this, DashBoardActivity.class);
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this, "Vous avez choisis Continuer", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, HorsConnexionMode.class);
                     startActivity(intent);
                 }
-                else {
-                    Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
-                }
+            });
+
+            monBuilder.setNegativeButton("Quitter", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this, "Tu as choisis Quitter", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             });
+
+            AlertDialog maDialogBox=monBuilder.create();
+            maDialogBox.show();
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void initializeUI() {
