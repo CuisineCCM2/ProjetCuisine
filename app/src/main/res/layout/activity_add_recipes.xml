@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddRecipes">
+
 
     <TextView
         android:id="@+id/textView6"
@@ -32,10 +39,19 @@
         android:text="Description" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/id_add_pic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ajouter une photo" />
+
+    <ImageView
+        android:id="@+id/id_imageview_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -78,6 +94,23 @@
             android:layout_weight="10"
             android:backgroundTint="#FFFFFF"
             android:src="@android:drawable/ic_input_add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <LinearLayout
@@ -153,10 +186,12 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/id_btn_validation_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enregistrer" />
     </LinearLayout>
 
 </LinearLayout>
+
+</ScrollView>
