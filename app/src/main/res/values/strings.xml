@@ -9,6 +9,7 @@
     <string name="login_enter_email">Please enter email...</string>
     <string name="login_enter_password">Please enter password!</string>
     <string name="login_failed">Login failed! Please try again later</string>
+    <string name="sqlitedbname">myrecipes</string>
     <string-array name="array_quantities">
         <item>Unités</item>
         <item>Kg</item>

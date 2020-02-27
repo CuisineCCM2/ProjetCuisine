@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     public static String email;
 
-
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            // créer la base sqllite, et si déja existante juste le connecté et récupérer
-         //   Toast.makeText(getApplicationContext(),"Pas connecté",Toast.LENGTH_SHORT).show();
+
             AlertDialog.Builder monBuilder = new AlertDialog.Builder(this);
             TextView textView = new TextView(this);
             textView.setText("\n  Oups Vous n'avez pas internet ! " +
@@ -103,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             monBuilder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    new GenericSqliteDatabase(getApplicationContext());
                     Toast.makeText(MainActivity.this, "Vous avez choisis Continuer", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, HorsConnexionMode.class);
                     startActivity(intent);
@@ -128,11 +127,15 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
+
+
     private void initializeUI() {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         loginBtn = findViewById(R.id.login);
         progressBar = findViewById(R.id.progressBar);
         registerBtn = findViewById(R.id.id_register);
+
     }
 }
