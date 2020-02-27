@@ -53,7 +53,7 @@ public class AddingIngredient extends Fragment {
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ShareNoteActivity.class);
+                Intent intent = new Intent(getActivity(), CookingRecipe.class);
                 startActivity(intent);
             }
         });

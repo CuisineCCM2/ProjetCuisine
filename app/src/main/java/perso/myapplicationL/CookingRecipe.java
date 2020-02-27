@@ -8,19 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class HorsConnexionMode extends AppCompatActivity {
+public class CookingRecipe extends AppCompatActivity {
 
-    private Button btntempo;
+    private Button btnvalidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hors_connexion_mode);
+        setContentView(R.layout.activity_cooking_recipe);
 
-        btntempo = findViewById(R.id.id_tempo);
-        btntempo.setOnClickListener(new View.OnClickListener() {
+       btnvalidation = findViewById(R.id.id_recipe_validation);
+        btnvalidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HorsConnexionMode.this, HorsConnexionModeRecipe.class);
+                Intent intent = new Intent(CookingRecipe.this, ShareNoteActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Votre recette est terminée !", Toast.LENGTH_LONG).show();
 
