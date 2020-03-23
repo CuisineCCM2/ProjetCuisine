@@ -40,7 +40,7 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
         ratingbarNote.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean b) {
-                Toast.makeText(getApplicationContext(), String.valueOf("Votre note est de : " + rating),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), String.valueOf(getString(R.string.rating) + rating),Toast.LENGTH_LONG).show();
             }
         });
         EmailView.setOnClickListener(new View.OnClickListener() {

@@ -4,26 +4,27 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 
 
-public class GenericSqliteDatabase {
+public class GenericSqliteDatabase extends AppCompatActivity {
     public GenericSqliteDatabase(Context context) {
         initializedatabase(context);
         this.context = context;
     }
 
     private static final String database_name = "myrecipes";
-    SQLiteDatabase mydatabasenoconnection;
     Context context;
 
-
     private SQLiteDatabase creatingdatabase() {
-        return SQLiteDatabase.openOrCreateDatabase(database_name, null);
+        SQLiteDatabase mydatabase = openOrCreateDatabase("myrecipes", MODE_PRIVATE,null);
+        return mydatabase;
     }
 
     private void initializedatabasesqlite(SQLiteDatabase mydatabasenoconnection) {
+        Log.d("lilbow", "je suis dans la fonction");
         String createIngredientTable = "CREATE TABLE ingredient(\n" +
                 "\tID_ingredient    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,\n" +
                 "\tname             TEXT NOT NULL\n" +
@@ -107,9 +108,8 @@ public class GenericSqliteDatabase {
 
     public void initializedatabase(Context context) {
         if (doesDatabaseExist(context, database_name) == false) {
-            initializedatabasesqlite(creatingdatabase());
             Log.d("Polo", "initializedatabase: ça fonctionne ");
-
+            initializedatabasesqlite(creatingdatabase());
         } else {
             Log.d("db_name", "La base de donnée est déja existante");
         }

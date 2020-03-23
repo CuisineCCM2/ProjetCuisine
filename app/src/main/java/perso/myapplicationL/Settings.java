@@ -52,10 +52,10 @@ public class Settings extends AppCompatActivity {
 
                 String editnumbercontent = editnumber.getText().toString();
                 if (TextUtils.isEmpty(editnumbercontent)) {
-                    Toast.makeText(getApplicationContext(), "Merci de reseigner votre numéro de téléphone", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.EnterPhoneNumber), Toast.LENGTH_LONG).show();
                     return;
                 }
-                Toast.makeText(getApplicationContext(), "Numéro ajouté !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.NumberAdded), Toast.LENGTH_LONG).show();
             }
         });
 

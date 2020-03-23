@@ -54,7 +54,7 @@ public class AddRecipes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddRecipes.this, Settings.class);
-                Toast.makeText(getApplicationContext(), "Recette enregistrée !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.SavedRecipe), Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
@@ -67,11 +67,11 @@ public class AddRecipes extends AppCompatActivity {
                 String quantitycontent = quantity.getText().toString();
 
                 if (TextUtils.isEmpty(ingredientcontent)) {
-                    Toast.makeText(getApplicationContext(), "Merci de rentrer un ingrédient", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.EnterIngredient, Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (TextUtils.isEmpty(quantitycontent)) {
-                    Toast.makeText(getApplicationContext(), "Merci de rentrer une quantité", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.EnterQuantity, Toast.LENGTH_LONG).show();
                     return;
                 }
 

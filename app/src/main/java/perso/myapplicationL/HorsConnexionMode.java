@@ -22,7 +22,7 @@ public class HorsConnexionMode extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HorsConnexionMode.this, HorsConnexionModeRecipe.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Votre recette est terminée !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.RecipeDone), Toast.LENGTH_LONG).show();
 
             }
         });

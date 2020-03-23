@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">LesFuribardsDeLaCuisine</string>
     <string name="title_activity_dashboard">dashboard</string>
-    <string name="tab_text_1">Historique</string>
-    <string name="tab_text_2">Je me lance !</string>
+    <string name="tab_text_1">Historic</string>
+    <string name="tab_text_2">Let\'s cook !</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="oven_api_key">vU231JWNs6s7Pb5K99lBSt1NpBPGr6Z7</string>
     <string name="login_successful">Login successful!</string>
@@ -10,6 +10,21 @@
     <string name="login_enter_password">Please enter password!</string>
     <string name="login_failed">Login failed! Please try again later</string>
     <string name="sqlitedbname">myrecipes</string>
+    <string name="LoginContinuer">continue</string>
+    <string name="QuitLogin">Quit</string>
+    <string name="ContinueChoiceLogin">You have chosen Continue</string>
+    <string name="QuitChoiceLogin">You chose Quit</string>
+    <string name="NoConnection">Oops You don\'t have internet!</string>
+    <string name="NoConnection2">Do you want to continue offline?</string>
+    <string name="EnterIngredient">Please enter an ingredient</string>
+    <string name="EnterQuantity">Please enter an quantity</string>
+    <string name="EnterPhoneNumber">Please enter your phone number</string>
+    <string name="NumberAdded">Number added !</string>
+    <string name="FiltersValidation">Validation of your filters</string>
+    <string name="RecipeDone">Your recipe is finished!</string>
+    <string name="rating">Your rating is :</string>
+    <string name="SavedRecipe">Saved recipe !</string>
+    <string name="RecipeFinished">Your recipe is finished !</string>
     <string-array name="array_quantities">
         <item>Unités</item>
         <item>Kg</item>

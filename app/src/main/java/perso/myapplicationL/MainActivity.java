@@ -95,23 +95,23 @@ public class MainActivity extends AppCompatActivity {
 
             AlertDialog.Builder monBuilder = new AlertDialog.Builder(this);
             TextView textView = new TextView(this);
-            textView.setText("\n  Oups Vous n'avez pas internet ! " +
-                    "\n  Voulez-vous continuer en mode hors connexion ? ");
+            textView.setText(getString(R.string.NoConnection) + "\n" +
+                    getString(R.string.NoConnection2));
             monBuilder.setCustomTitle(textView);
-            monBuilder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
+            monBuilder.setPositiveButton(getString(R.string.LoginContinuer), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     new GenericSqliteDatabase(getApplicationContext());
-                    Toast.makeText(MainActivity.this, "Vous avez choisis Continuer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.ContinueChoiceLogin), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, HorsConnexionMode.class);
                     startActivity(intent);
                 }
             });
 
-            monBuilder.setNegativeButton("Quitter", new DialogInterface.OnClickListener() {
+            monBuilder.setNegativeButton(getString(R.string.QuitLogin), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(MainActivity.this, "Tu as choisis Quitter", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.QuitChoiceLogin), Toast.LENGTH_SHORT).show();
                     finish();
                 }
             });

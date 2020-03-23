@@ -66,11 +66,11 @@ public class AddingIngredient extends Fragment {
                 String quantitycontent = quantity.getText().toString();
 
                 if (TextUtils.isEmpty(ingredientcontent)) {
-                    Toast.makeText(getContext(), "Merci de rentrer un ingrédient", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.EnterIngredient), Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (TextUtils.isEmpty(quantitycontent)) {
-                    Toast.makeText(getContext(), "Merci de rentrer une quantité", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.EnterQuantity), Toast.LENGTH_LONG).show();
                     return;
                 }
 

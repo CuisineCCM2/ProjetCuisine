@@ -22,7 +22,7 @@ public class CookingRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CookingRecipe.this, ShareNoteActivity.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Votre recette est terminée !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.RecipeFinished), Toast.LENGTH_LONG).show();
 
             }
         });

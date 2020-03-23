@@ -23,7 +23,7 @@ public class AddingFilter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddingFilter.this, DashBoardActivity.class);
-                Toast.makeText(getApplicationContext(), "Validation de vos filtres", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.FiltersValidation), Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
