@@ -38,6 +38,14 @@
         android:inputType="textPersonName"
         android:text="Description" />
 
+    <EditText
+        android:id="@+id/id_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/category" />
+
     <Button
         android:id="@+id/id_add_pic"
         android:layout_width="match_parent"
