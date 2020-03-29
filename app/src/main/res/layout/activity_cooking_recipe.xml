@@ -16,7 +16,7 @@
             android:id="@+id/title_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Titre"
+            android:text="@string/title_recipe"
             android:textSize="22sp"
             android:gravity="center"
             />
@@ -38,7 +38,7 @@
             android:id="@+id/category_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Catégorie :"
+            android:text="@string/category"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Temps :"
+            android:text="@string/preparation_time"
             android:textSize="18sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Calories :"
+            android:text="@string/calories"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:id="@+id/description_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description :"
+            android:text="@string/description"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -98,7 +98,7 @@
             android:id="@+id/instruction_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instruction :"
+            android:text="@string/instructions"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="A table !" />
+            android:text="@string/it_s_ready" />
     </LinearLayout>
 
 

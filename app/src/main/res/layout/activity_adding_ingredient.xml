@@ -80,13 +80,13 @@
             android:id="@+id/id_button_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Filtres" />
+            android:text="@string/filters" />
 
         <Button
             android:id="@+id/id_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rechercher" />
+            android:text="@string/find_a_recipe" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

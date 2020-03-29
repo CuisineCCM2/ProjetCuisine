@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Paramètres"
+        android:text="Settings"
         android:textSize="22sp" />
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Numéro de téléphone :" />
+            android:text="Phone Number :" />
 
         <EditText
             android:id="@+id/id_phone_number"
@@ -43,20 +43,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Ajouter" />
+        android:text="@string/add_your_phone_number" />
 
     <Button
         android:id="@+id/btnaddrecipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="AJOUTE TA RECETTE !" />
+        android:text="@string/add_your_recipe" />
 
     <Button
         android:id="@+id/btn_deconnexion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Déconnexion" />
+        android:text="@string/disconnect" />
 
 </LinearLayout>

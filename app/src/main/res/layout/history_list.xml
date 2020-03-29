@@ -19,7 +19,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Vous avez déjà cuisiné"
+        android:text="@string/you_have_already_cooked"
         android:textSize="22sp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/id_list_recipes"

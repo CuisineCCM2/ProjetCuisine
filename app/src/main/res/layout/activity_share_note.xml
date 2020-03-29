@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Notez la recette effectuée !"
+        android:text="@string/note_the_recipe"
         android:textSize="22sp" />
 
     <LinearLayout
@@ -35,15 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Partagez la recette :"
+            android:text="@string/share_the_recipe"
             android:textSize="22sp" />
 
         <Button
             android:id="@+id/share_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PARTAGEZ LA RECETTE" />
-
+            android:text="@string/share" />
     </LinearLayout>
 
 </LinearLayout>

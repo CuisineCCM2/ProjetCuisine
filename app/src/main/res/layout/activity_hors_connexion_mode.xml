@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Bienvenue sur le mode hors connexion !"
+            android:text="@string/welcome_to_offline_mode"
             android:textSize="22sp" />
 
     </LinearLayout>
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Vous avez déja cuisiné :"
+            android:text="@string/you_have_already_cooked"
             android:textSize="18sp" />
 
     </LinearLayout>

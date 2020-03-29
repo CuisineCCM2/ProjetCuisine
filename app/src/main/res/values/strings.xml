@@ -9,7 +9,6 @@
     <string name="login_enter_email">Please enter email...</string>
     <string name="login_enter_password">Please enter password!</string>
     <string name="login_failed">Login failed! Please try again later</string>
-    <string name="sqlitedbname">myrecipes</string>
     <string name="LoginContinuer">continue</string>
     <string name="QuitLogin">Quit</string>
     <string name="ContinueChoiceLogin">You have chosen Continue</string>
@@ -25,8 +24,34 @@
     <string name="rating">Your rating is :</string>
     <string name="SavedRecipe">Saved recipe !</string>
     <string name="RecipeFinished">Your recipe is finished !</string>
+    <string name="add_your_recipe">Add your recipe</string>
+    <string name="title_recipe">Title</string>
+    <string name="add_a_pic">Add a pic</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="quantity">Quantity</string>
+    <string name="preparation_time">Preparation time :</string>
+    <string name="number_of_persons">Number of persons :</string>
+    <string name="save_recipe">Save recipe</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="add_a_filter_to_your_search">Add a filter to your search !</string>
+    <string name="validate">Validate</string>
+    <string name="filters">Filters</string>
+    <string name="find_a_recipe">Find a recipe</string>
+    <string name="category">Category :</string>
+    <string name="calories">Calories :</string>
+    <string name="instructions">Instructions :</string>
+    <string name="description">Description :</string>
+    <string name="it_s_ready">It\'s ready !</string>
+    <string name="add_your_phone_number">Add your phone number</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="welcome_to_offline_mode">Welcome to offline mode !</string>
+    <string name="you_have_already_cooked">You have already cooked :</string>
+    <string name="note_the_recipe">Note the recipe !</string>
+    <string name="share_the_recipe">SHARE THE RECIPE :</string>
+    <string name="share">Share</string>
+    <string name="choose_the_user">Choose the user :</string>
     <string-array name="array_quantities">
-        <item>Unités</item>
+        <item>Units</item>
         <item>Kg</item>
         <item>G</item>
         <item>Pu</item>
@@ -36,9 +61,9 @@
     </string-array>
     <string-array name="array_times">
         <item>Sélectionnez</item>
-        <item>0 à 20 minutes</item>
-        <item>20 à 40 minutes</item>
-        <item>40 à 60 minutes</item>
-        <item>Plus de 60 minutes</item>
+        <item>0 to 20 minutes</item>
+        <item>20 to 40 minutes</item>
+        <item>40 to 60 minutes</item>
+        <item>More than 60 minutes</item>
     </string-array>
 </resources>
