@@ -10,18 +10,41 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/courgette"
         android:gravity="center"
-        android:textSize="22sp"
-        android:text="Les furibards de la cuisine !" />
+        android:text="Les furibards de la cuisine !"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+
+            android:src="@drawable/dragoncuisine"
+
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/email"
+        style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:hint="Email"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/password"
+        style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
@@ -29,12 +52,14 @@
 
     <Button
         android:id="@+id/login"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login" />
 
     <Button
         android:id="@+id/id_register"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register" />
@@ -44,13 +69,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/dragoncuisine"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </LinearLayout>
