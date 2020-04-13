@@ -47,6 +47,11 @@
         android:layout_weight="1"
         android:text="@string/add_your_phone_number" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
     <Button
         android:id="@+id/btnaddrecipe"
         style="@android:style/Widget.Material.Button.Colored"

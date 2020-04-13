@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LesFuribardsDeLaCuisine</string>
+    <string name="app_name">Les Furibards De La Cuisine</string>
     <string name="title_activity_dashboard">dashboard</string>
     <string name="tab_text_1">Historic</string>
     <string name="tab_text_2">Let\'s cook !</string>
