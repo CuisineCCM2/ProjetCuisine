@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/note_the_recipe"
+        android:fontFamily="@font/courgette"
         android:textSize="22sp" />
 
     <LinearLayout
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/share_the_recipe"
+            android:fontFamily="@font/courgette"
             android:textSize="22sp" />
 
         <Button

@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_your_recipe"
-        android:textSize="22sp"
+        android:textSize="28sp"
+        android:fontFamily="@font/courgette"
         android:gravity="center"/>
 
     <EditText
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/title_recipe" />
+        android:hint="@string/title_recipe" />
 
     <EditText
         android:id="@+id/id_description"
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Description" />
+        android:hint="Description" />
 
     <EditText
         android:id="@+id/id_category"
@@ -44,7 +45,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/category" />
+        android:hint="@string/category" />
 
     <Button
         android:id="@+id/id_add_pic"
@@ -78,7 +79,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/ingredients" />
+            android:hint="@string/ingredients" />
 
         <EditText
             android:id="@+id/id_quantity"
@@ -87,7 +88,7 @@
             android:layout_weight="30"
             android:ems="10"
             android:inputType="number"
-            android:text="@string/quantity" />
+            android:hint="@string/quantity" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -186,7 +187,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:hint="Enter your instructions" />
     </LinearLayout>
 
     <LinearLayout

@@ -50,6 +50,7 @@
     <string name="share_the_recipe">SHARE THE RECIPE :</string>
     <string name="share">Share</string>
     <string name="choose_the_user">Choose the user :</string>
+    <string name="les_furibards_de_la_cuisine">Les furibards de la cuisine !</string>
     <string-array name="array_quantities">
         <item>Units</item>
         <item>Kg</item>

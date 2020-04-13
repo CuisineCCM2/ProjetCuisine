@@ -20,6 +20,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/welcome_to_offline_mode"
+            android:fontFamily="@font/courgette"
             android:textSize="22sp" />
 
     </LinearLayout>

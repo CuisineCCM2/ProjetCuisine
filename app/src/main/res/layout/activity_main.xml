@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/courgette"
         android:gravity="center"
-        android:text="Les furibards de la cuisine !"
+        android:text="@string/les_furibards_de_la_cuisine"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -28,9 +28,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-
             android:src="@drawable/dragoncuisine"
-
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
