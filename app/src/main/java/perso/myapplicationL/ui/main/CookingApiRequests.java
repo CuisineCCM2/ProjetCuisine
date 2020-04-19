@@ -39,7 +39,6 @@ public class CookingApiRequests extends AsyncTask<String, Void, String> {
                 String chunks;
                 while((chunks = buff.readLine()) != null) {
                     dta.append(chunks);
-                    Log.d("chibrax", chunks);
                 }
             }
             // faire un truc

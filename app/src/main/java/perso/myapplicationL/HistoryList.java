@@ -57,6 +57,8 @@ public class HistoryList extends Fragment {
                         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, recettes);
                         historyListView.setAdapter(adapter);
                         b = false;
+                    } else {
+                        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, new String[0]);
                     }
                 }
                 handler.postDelayed(this, delay);

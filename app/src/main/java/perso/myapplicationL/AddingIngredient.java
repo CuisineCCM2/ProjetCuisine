@@ -32,6 +32,7 @@ public class AddingIngredient extends Fragment {
     private ImageButton btnadd;
     private RecyclerView myRecyclerView;
     List<String> items;
+    String[] ingredients = {"Apple", "Banana", "Cherry", "Date"};
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,7 +45,12 @@ public class AddingIngredient extends Fragment {
         ingredient = root.findViewById(R.id.id_ingredients);
         quantity = root.findViewById(R.id.id_quantity);
         items = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), layout.select_dialog_item, ingredients);
 
+        AutoCompleteTextView actv = (AutoCompleteTextView) root.findViewById(R.id.id_ingredients);
+        actv.setThreshold(1);
+        actv.setAdapter(adapter);
+        actv.setTextColor(Color.BLUE);
 
         btnfilter.setOnClickListener(new View.OnClickListener() {
             @Override
