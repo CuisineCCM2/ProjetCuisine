@@ -4,27 +4,27 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.File;
 
 
-public class GenericSqliteDatabase extends AppCompatActivity {
-    public GenericSqliteDatabase(Context context) {
-        initializedatabase(context);
-        this.context = context;
+public class GenericSqliteDatabase {
+    public GenericSqliteDatabase(Context monContext) {
+        this.context = monContext;
+        initializedatabase(monContext);
     }
 
     private static final String database_name = "myrecipes";
     Context context;
 
     private SQLiteDatabase creatingdatabase() {
-        SQLiteDatabase mydatabase = openOrCreateDatabase("myrecipes", MODE_PRIVATE,null);
-        return mydatabase;
+        java.io.File path=context.getDatabasePath(database_name);
+        Log.d("FURIBARD", "path  :  " + ((path!=null)?"Bingo":"Bullshit"));
+        String databasePath = path.getPath();
+        Log.d("FURIBARD", "context  :  " + ((context!=null)?"Bingo":"Bullshit"));
+        return context.openOrCreateDatabase(database_name, Context.MODE_PRIVATE, null);
     }
 
     private void initializedatabasesqlite(SQLiteDatabase mydatabasenoconnection) {
-        Log.d("lilbow", "je suis dans la fonction");
         String createIngredientTable = "CREATE TABLE ingredient(\n" +
                 "\tID_ingredient    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,\n" +
                 "\tname             TEXT NOT NULL\n" +
@@ -95,9 +95,9 @@ public class GenericSqliteDatabase extends AppCompatActivity {
                 createContainTable,
                 createPossesses};
 
-       for(String create : statements){
-           mydatabasenoconnection.execSQL(create);
-       }
+        for(String create : statements){
+            mydatabasenoconnection.execSQL(create);
+        }
     }
 
 
@@ -108,8 +108,9 @@ public class GenericSqliteDatabase extends AppCompatActivity {
 
     public void initializedatabase(Context context) {
         if (doesDatabaseExist(context, database_name) == false) {
-            Log.d("Polo", "initializedatabase: ça fonctionne ");
             initializedatabasesqlite(creatingdatabase());
+            Log.d("Polo", "initializedatabase: ça fonctionne ");
+
         } else {
             Log.d("db_name", "La base de donnée est déja existante");
         }

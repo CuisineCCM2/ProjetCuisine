@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             monBuilder.setPositiveButton(getString(R.string.LoginContinuer), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    new GenericSqliteDatabase(getApplicationContext());
+                    new GenericSqliteDatabase(MainActivity.this);
                     Toast.makeText(MainActivity.this, getString(R.string.ContinueChoiceLogin), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, HorsConnexionMode.class);
                     startActivity(intent);
