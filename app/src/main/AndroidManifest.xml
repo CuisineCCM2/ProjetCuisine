@@ -17,7 +17,6 @@
         <activity android:name=".CookingRecipe"></activity>
         <activity android:name=".HorsConnexionModeRecipe" />
         <activity android:name=".HorsConnexionMode" />
-        <activity android:name=".AddRecipes" />
         <activity android:name=".Settings" />
         <activity android:name=".AddingFilter" />
         <activity android:name=".RecyclerSimpleViewAdapter" />
