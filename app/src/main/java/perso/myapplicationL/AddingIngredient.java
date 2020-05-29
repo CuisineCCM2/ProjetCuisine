@@ -25,6 +25,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import perso.myapplicationL.ui.main.ApiSelectRequests;
+
 public class AddingIngredient extends Fragment {
 
     private EditText ingredient, quantity;
@@ -33,6 +35,7 @@ public class AddingIngredient extends Fragment {
     private RecyclerView myRecyclerView;
     List<String> items;
     String[] ingredients = {"Apple", "Banana", "Cherry", "Date"};
+    ApiSelectRequests ASR = new ApiSelectRequests();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class AddingIngredient extends Fragment {
         ingredient = root.findViewById(R.id.id_ingredients);
         quantity = root.findViewById(R.id.id_quantity);
         items = new ArrayList<>();
+        /*ingredientsList = ASR.execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectallingredients");*/
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), layout.select_dialog_item, ingredients);
 
         AutoCompleteTextView actv = (AutoCompleteTextView) root.findViewById(R.id.id_ingredients);
@@ -63,7 +67,7 @@ public class AddingIngredient extends Fragment {
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CookingRecipe.class);
+                Intent intent = new Intent(getActivity(), RecipeList.class);
                 startActivity(intent);
             }
         });
