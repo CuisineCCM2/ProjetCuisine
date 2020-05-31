@@ -3,6 +3,9 @@ package perso.myapplicationL.ui.main;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +21,7 @@ import perso.myapplicationL.R;
 public class ApiSelectRequests extends AsyncTask<String, String, String> {
 
     public ApiSelectRequests() {}
-    public String ingredientsList;
+    public JSONObject ingredientsList;
 
     @Override
     protected String doInBackground(String... uri) {
@@ -27,6 +30,8 @@ public class ApiSelectRequests extends AsyncTask<String, String, String> {
             URL url = new URL(uri[0]);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
+            long contentLength = Long.parseLong(urlConnection.getHeaderField("Content-Length"));
+            Log.d("DECASC3", "length :" + contentLength);
 
             int statusCode = urlConnection.getResponseCode();
             if (statusCode ==  200) {
@@ -37,15 +42,18 @@ public class ApiSelectRequests extends AsyncTask<String, String, String> {
                 String chunks;
                 while((chunks = buff.readLine()) != null) {
                     dta.append(chunks);
-                    Log.d("DECASC2", "doInBackground: " + chunks);
+                    //Log.d("DECASC2", "doInBackground: " + dta.toString());
                 }
-                ingredientsList = chunks;
+                ingredientsList = new JSONObject(dta.toString());
+                Log.d("DECASC2", "doInBackground: " + ingredientsList.toString());
             }
         } catch (ProtocolException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
