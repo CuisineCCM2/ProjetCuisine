@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import perso.myapplicationL.ui.main.ApiSelectRequests;
 import perso.myapplicationL.ui.main.CookingApiRequests;
 import perso.myapplicationL.ui.main.FirebaseConnection;
 import perso.myapplicationL.ui.main.SectionsPagerAdapter;
@@ -34,6 +35,7 @@ public class DashBoardActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         FirebaseConnection.init();
         new CookingApiRequests(getApplicationContext()).execute();
+        new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectallingredientsforandroidapp");
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

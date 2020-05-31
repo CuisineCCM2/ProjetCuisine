@@ -28,7 +28,8 @@ public class RecipeList extends AppCompatActivity {
         setContentView(R.layout.recipe_list);
         historyListView = findViewById(R.id.id_list_recipes);
         new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectallingredientsforandroidapp");
-        String[] recettes = new String[]{
+        String[] recettes ;
+        recettes = new String[]{
             "Poulet Basquese", "Tartiflette", "Bo bun"
         };
 

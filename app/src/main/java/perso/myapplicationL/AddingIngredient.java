@@ -22,6 +22,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class AddingIngredient extends Fragment {
     private ImageButton btnadd;
     private RecyclerView myRecyclerView;
     List<String> items;
-    String[] ingredients = {"Apple", "Banana", "Cherry", "Date"};
+    //String[] ingredients = {"Apple", "Banana", "Cherry", "Date"};
     ApiSelectRequests ASR = new ApiSelectRequests();
 
     @Override
@@ -48,8 +50,18 @@ public class AddingIngredient extends Fragment {
         ingredient = root.findViewById(R.id.id_ingredients);
         quantity = root.findViewById(R.id.id_quantity);
         items = new ArrayList<>();
+        while(ApiSelectRequests.ingredientsList == null) {}
+        String[] ing = new String[ApiSelectRequests.ingredientsList.length()];
+
+        for(int i=0; i < ApiSelectRequests.ingredientsList.length(); i++) {
+            try {
+                ing[i] = ApiSelectRequests.ingredientsList.getJSONObject(i).getString("name");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         /*ingredientsList = ASR.execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectallingredients");*/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), layout.select_dialog_item, ingredients);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), layout.select_dialog_item, ing);
 
         AutoCompleteTextView actv = (AutoCompleteTextView) root.findViewById(R.id.id_ingredients);
         actv.setThreshold(1);
