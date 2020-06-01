@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.R.layout;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +24,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import perso.myapplicationL.ui.main.ApiSelectRequests;
@@ -79,6 +83,8 @@ public class AddingIngredient extends Fragment {
         btnsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("DECASC2", "onClick: " + Arrays.toString(items.toArray()));
+                new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectrecipesbyingredientsforandroidapp?ingredientArray=" + Uri.encode(new JSONArray(items).toString(), "UTF-8"));
                 Intent intent = new Intent(getActivity(), RecipeList.class);
                 startActivity(intent);
             }
@@ -101,7 +107,7 @@ public class AddingIngredient extends Fragment {
                 }
 
 
-                items.add(ingredientcontent + " : " + quantitycontent  );
+                items.add(ingredientcontent);
 
                 RecyclerSimpleViewAdapter adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
                 myRecyclerView.setAdapter(adapter);
