@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class AddingIngredient extends Fragment {
         AutoCompleteTextView actv = (AutoCompleteTextView) root.findViewById(R.id.id_ingredients);
         actv.setThreshold(1);
         actv.setAdapter(adapter);
-        actv.setTextColor(Color.BLUE);
+        actv.setTextColor(Color.GREEN);
 
         btnfilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,9 +85,28 @@ public class AddingIngredient extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("DECASC2", "onClick: " + Arrays.toString(items.toArray()));
+
                 new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectrecipesbyingredientsforandroidapp?ingredientArray=" + Uri.encode(new JSONArray(items).toString(), "UTF-8"));
-                Intent intent = new Intent(getActivity(), RecipeList.class);
-                startActivity(intent);
+               // Intent intent = new Intent(getActivity(), RecipeList.class);
+                // startActivity(intent);
+                new Thread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        try
+                        {
+                            Thread.sleep(1000);
+                            Intent i = new Intent(getActivity(), RecipeList.class);
+                            startActivity(i);
+                        }
+                        catch (InterruptedException e)
+                        {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
 

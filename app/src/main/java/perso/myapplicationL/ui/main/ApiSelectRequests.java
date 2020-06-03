@@ -23,6 +23,7 @@ public final class ApiSelectRequests extends AsyncTask<String, String, String> {
 
     public ApiSelectRequests() {}
     public static JSONArray ingredientsList;
+    public static JSONArray recipesList;
 
     @Override
     protected String doInBackground(String... uri) {
@@ -60,7 +61,16 @@ public final class ApiSelectRequests extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        //Do anything with response..
+        //do stuff
+     //   returnMethod(result);
     }
+
+  /*  private JSONArray returnMethod(String result) {
+        try {
+            return new JSONArray(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    } */
 }
