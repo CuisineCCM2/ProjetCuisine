@@ -3,6 +3,7 @@ package perso.myapplicationL;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,6 +45,18 @@ public class CookingRecipe extends AppCompatActivity {
             title.setText(recipe.getString("name"));
             //imageView.setImageURI(new URL(recipe.getString("picture")));
             Picasso.get().load(recipe.getString("picture")).into(imageView);
+            /*Picasso.Builder builder = new Picasso.Builder(this);
+            builder.listener(new Picasso.Listener()
+            {
+                @Override
+                public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
+                {
+                    exception.printStackTrace();
+                }
+            });
+            builder.build().load(recipe.getString("picture")).into(imageView)/*.resize(200, 250);
+            */
+
             Log.d("decasc8", recipe.getString("picture"));
             category.setText(recipe.getString("category"));
             calories.setText(recipe.getString("calories"));
