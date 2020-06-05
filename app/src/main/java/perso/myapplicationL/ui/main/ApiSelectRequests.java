@@ -64,13 +64,4 @@ public final class ApiSelectRequests extends AsyncTask<String, String, String> {
         //do stuff
      //   returnMethod(result);
     }
-
-  /*  private JSONArray returnMethod(String result) {
-        try {
-            return new JSONArray(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    } */
 }
