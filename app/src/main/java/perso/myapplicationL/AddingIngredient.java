@@ -40,8 +40,8 @@ public class AddingIngredient extends Fragment {
     private Button btnsearch, btnfilter ;
     private ImageButton btnadd;
     private RecyclerView myRecyclerView;
+    private int compteur =0;
     List<String> items;
-    //String[] ingredients = {"Apple", "Banana", "Cherry", "Date"};
     ApiSelectRequests ASR = new ApiSelectRequests();
 
     @Override
@@ -65,7 +65,6 @@ public class AddingIngredient extends Fragment {
                 e.printStackTrace();
             }
         }
-        /*ingredientsList = ASR.execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectallingredients");*/
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), layout.select_dialog_item, ing);
 
         AutoCompleteTextView actv = (AutoCompleteTextView) root.findViewById(R.id.id_ingredients);
@@ -81,43 +80,14 @@ public class AddingIngredient extends Fragment {
             }
         });
 
-        btnsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("DECASC2", "onClick: " + Arrays.toString(items.toArray()));
-
-                new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectrecipesbyingredientsforandroidapp?ingredientArray=" + Uri.encode(new JSONArray(items).toString(), "UTF-8"));
-               // Intent intent = new Intent(getActivity(), RecipeList.class);
-                // startActivity(intent);
-                new Thread(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        try
-                        {
-                            Thread.sleep(1000);
-                            Intent i = new Intent(getActivity(), RecipeList.class);
-                            startActivity(i);
-                        }
-                        catch (InterruptedException e)
-                        {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
-            }
-        });
-
+        final String[] ingredientcontent = new String[1];
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String ingredientcontent = ingredient.getText().toString();
+                ingredientcontent[0] = ingredient.getText().toString();
                 String quantitycontent = quantity.getText().toString();
 
-                if (TextUtils.isEmpty(ingredientcontent)) {
+                if (TextUtils.isEmpty(ingredientcontent[0])) {
                     Toast.makeText(getContext(), getString(R.string.EnterIngredient), Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -126,15 +96,59 @@ public class AddingIngredient extends Fragment {
                     return;
                 }
 
-
-                items.add(ingredientcontent);
-
-                RecyclerSimpleViewAdapter adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
-                myRecyclerView.setAdapter(adapter);
-                myRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                Toast.makeText(getContext(), "Ligne ajoutée : " + ingredientcontent + " " + quantitycontent, Toast.LENGTH_LONG).show();
+                compteur++;
+                if (compteur <= 5) {
+                    items.add(ingredientcontent[0]);
+                    RecyclerSimpleViewAdapter adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
+                    myRecyclerView.setAdapter(adapter);
+                    myRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    Toast.makeText(getContext(), "added line : " + ingredientcontent[0] + " " + quantitycontent, Toast.LENGTH_LONG).show();
+                    ingredient.setText(null);
+                    quantity.setText(null);
+                    ingredient.requestFocus();
+                } else {
+                    ingredient.setText(null);
+                    quantity.setText(null);
+                    ingredient.setEnabled(false);
+                    quantity.setEnabled(false);
+                    Toast.makeText(getContext(), getString(R.string.limitingredient), Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DECASC2", "onClick: " + Arrays.toString(items.toArray()));
+
+                new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectrecipesbyingredientsforandroidapp?ingredientArray=" + Uri.encode(new JSONArray(items).toString(), "UTF-8"));
+                if (ingredientcontent[0] != null) {
+                    new Thread(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            try
+                            {
+                                Thread.sleep(1000);
+                                Intent i = new Intent(getActivity(), RecipeList.class);
+                                startActivity(i);
+                            }
+                            catch (InterruptedException e)
+                            {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+                }
+                else {
+                    Toast.makeText(getContext(), getString(R.string.MustAddingredient) , Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
         return root;
     }
 

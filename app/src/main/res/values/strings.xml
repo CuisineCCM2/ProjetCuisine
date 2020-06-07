@@ -53,6 +53,8 @@
     <string name="send_form">Send add recipe form</string>
     <string name="les_furibards_de_la_cuisine">Les furibards de la cuisine !</string>
     <string name="we_are_proposing">We are proposing</string>
+    <string name="MustAddingredient">You must add an ingredient !</string>
+    <string name="limitingredient">You can not add more ingredients, limited to 5</string>
     <string-array name="array_quantities">
         <item>Units</item>
         <item>Kg</item>

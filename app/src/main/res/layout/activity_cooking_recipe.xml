@@ -41,6 +41,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/courgette"
             android:text="@string/category"
+            android:textStyle="bold"
+            android:textColor="#222"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -67,6 +69,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/courgette"
             android:text="@string/preparation_time"
+            android:textColor="#222"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <TextView
@@ -83,6 +87,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/courgette"
             android:text="@string/calories"
+            android:textColor="#222"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <TextView
@@ -101,6 +107,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/courgette"
             android:text="@string/description"
+            android:textColor="#222"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -132,6 +140,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/courgette"
             android:text="@string/instructions"
+            android:textColor="#222"
+            android:textStyle="bold"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -158,7 +168,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/it_s_ready" />
+            android:text="@string/it_s_ready"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 
