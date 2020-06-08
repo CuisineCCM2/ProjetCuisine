@@ -14,16 +14,21 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import perso.myapplicationL.ui.main.ApiSelectRequests;
+import perso.myapplicationL.ui.main.FirebaseConnection;
+
 public class CookingRecipe extends AppCompatActivity {
     private Button btnvalidation;
-    private TextView title, category, calories, time, instruction, description;
+    private TextView title, category, calories, time, instruction, description, ingredients;
     private ImageView imageView;
+    private JSONArray arrayIngredients;
     Intent intent;
     JSONObject recipe;
     @Override
@@ -38,31 +43,57 @@ public class CookingRecipe extends AppCompatActivity {
         description = findViewById(R.id.description_recipe);
         time = findViewById(R.id.time_recipe);
         instruction = findViewById(R.id.instruction_recipe);
+        ingredients = findViewById(R.id.textview_ingredients);
         try {
-            Log.d("decasc2", "" + intent.getStringExtra("recipe"));
             recipe = new JSONObject(intent.getStringExtra("recipe"));
-            Log.d("decasc2", "" + recipe.toString());
+            recipe.getString("ID_recipe");
+            // requete ingredients de la recette
+            new ApiSelectRequests().execute("https://select-service-dot-lesfuribardsdelacuisine-266513.appspot.com/selectingredientsforrecipeuser?id_recipe=" + recipe.getString("ID_recipe"));
             title.setText(recipe.getString("name"));
-            //imageView.setImageURI(new URL(recipe.getString("picture")));
             Picasso.get().load(recipe.getString("picture")).into(imageView);
-            /*Picasso.Builder builder = new Picasso.Builder(this);
-            builder.listener(new Picasso.Listener()
-            {
-                @Override
-                public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
-                {
-                    exception.printStackTrace();
-                }
-            });
-            builder.build().load(recipe.getString("picture")).into(imageView)/*.resize(200, 250);
-            */
-
-            Log.d("decasc8", recipe.getString("picture"));
             category.setText(recipe.getString("category"));
             calories.setText(recipe.getString("calories"));
             description.setText(recipe.getString("description"));
             time.setText(recipe.getString("time"));
             instruction.setText(recipe.getString("instruction"));
+            /*new Thread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    try { Thread.sleep(1000); }
+                    catch (InterruptedException e) { e.printStackTrace(); }
+                    arrayIngredients = ApiSelectRequests.ingredientsList;
+                    Log.d("decasc6", "on sleep: " + arrayIngredients.toString());
+                    String ingredientsText = "";
+                    for(int i = 0; i < arrayIngredients.length(); i++) {
+                        try {
+                            ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + "/n";
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    ingredients.setText(ingredientsText);
+                }
+            }).start();*/
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try { Thread.sleep(1000); }
+                        catch (InterruptedException e) { e.printStackTrace(); }
+                        arrayIngredients = ApiSelectRequests.ingredientsList;
+                        Log.d("decasc6", "on sleep: " + arrayIngredients.toString());
+                        String ingredientsText = "";
+                        for(int i = 0; i < arrayIngredients.length(); i++) {
+                            try {
+                                ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + "\n";
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        ingredients.setText(ingredientsText);
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -71,6 +102,11 @@ public class CookingRecipe extends AppCompatActivity {
         btnvalidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    FirebaseConnection.addRecipe(recipe.getString("name") + "*" + recipe.getString("ID_recipe"), null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(CookingRecipe.this, ShareNoteActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), getString(R.string.RecipeFinished), Toast.LENGTH_LONG).show();

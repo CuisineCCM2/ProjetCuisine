@@ -122,16 +122,31 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/courgette"
+            android:text="@string/ingredients"
+            android:textColor="#222"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/textview_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Loading ingredients ..."
+                android:textSize="18sp" />
     </LinearLayout>
 
         <TextView
@@ -141,8 +156,8 @@
             android:fontFamily="@font/courgette"
             android:text="@string/instructions"
             android:textColor="#222"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
         android:layout_width="match_parent"

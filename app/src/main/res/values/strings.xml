@@ -27,7 +27,7 @@
     <string name="add_your_recipe">Add your recipe</string>
     <string name="title_recipe">Title</string>
     <string name="add_a_pic">Add a pic</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Ingredients :</string>
     <string name="quantity">Quantity</string>
     <string name="preparation_time">Preparation time :</string>
     <string name="number_of_persons">Number of persons :</string>

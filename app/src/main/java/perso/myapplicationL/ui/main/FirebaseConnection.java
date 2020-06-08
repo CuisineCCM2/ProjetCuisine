@@ -16,7 +16,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import perso.myapplicationL.MainActivity;
 
@@ -95,5 +98,29 @@ public class FirebaseConnection {
                 }
             }
         });
+    }
+
+    public static void addRecipe(String name, String note) {
+        Map<String, Object> recipe = new HashMap<>();
+        recipe.put("date", new Date());
+        if(note != null) {
+            recipe.put("note", note);
+        }
+
+        dbUser.collection("recettes").document(name)
+                .set(recipe)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        //Log.d(TAG, "DocumentSnapshot successfully written!");
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("FIREBASE", "Error writing document", e);
+                    }
+                });
     }
 }
