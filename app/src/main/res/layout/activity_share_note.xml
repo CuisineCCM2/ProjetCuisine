@@ -9,24 +9,26 @@
     tools:context=".ShareNoteActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/courgette"
-        android:gravity="center"
-        android:text="@string/note_the_recipe"
-        android:textSize="22sp" />
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/courgette"
+            android:gravity="center"
+            android:text="@string/note_the_recipe"
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100px"
             android:forceHasOverlappingRendering="false"
             android:gravity="center"
             android:orientation="horizontal">
@@ -52,7 +54,15 @@
             style="@android:style/Widget.Material.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100px"
             android:text="@string/share" />
+
+        <Button
+            android:id="@+id/return_button"
+            style="@android:style/Widget.Material.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Return to home" />
     </LinearLayout>
 
 </LinearLayout>

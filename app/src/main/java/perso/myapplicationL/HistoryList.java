@@ -46,9 +46,12 @@ public class HistoryList extends Fragment {
                         String[] recettes = new String[FirebaseConnection.listRecipes.size()];
                         recettes = FirebaseConnection.listRecipes.toArray(recettes);
                         for(int i = 0; i < recettes.length; i++) {
-                            Log.d("DECAPITOR", "run: " + recettes[i]);
+                            String note = "";
+                            if(FirebaseConnection.mapNotes.get(recettes[i]) != null) {
+                                note = "\nNote : " + FirebaseConnection.mapNotes.get(recettes[i]);
+                            }
                             recettes[i] = recettes[i].split("\\*")[0];
-                            Log.d("DECAPITOR", "run: " + recettes[i]);
+                            recettes[i] += note;
                         }
                         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, recettes);
                         historyListView.setAdapter(adapter);

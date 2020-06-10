@@ -30,12 +30,15 @@ public class FirebaseConnection {
     public static String userPseudo;
     public static double currentRecipe;
     public static ArrayList<Object> listRecipes;
+    public static Map<String, String> mapNotes;
+    private static String currentRecipeString = "";
 
     public static void init() {
         db = FirebaseFirestore.getInstance();
         userMail = MainActivity.email;
         dbUser = db.collection("utilisateurs").document(userMail);
         listRecipes = new ArrayList<>();
+        mapNotes = new HashMap<>();
         getDataFirebase();
         getRecipe("poulet curry");
         getAllRecipes();
@@ -90,7 +93,11 @@ public class FirebaseConnection {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d("decasc9", "getAllRecipes: " + document.toString());
                         listRecipes.add(document.getId());
+                        if(document.getData().get("note") != null) {
+                            mapNotes.put(document.getId(), document.getData().get("note").toString());
+                        }
                     }
                     Log.d("GETALLRECIPES", ""+ listRecipes, task.getException());
                 } else {
@@ -106,7 +113,7 @@ public class FirebaseConnection {
         if(note != null) {
             recipe.put("note", note);
         }
-
+        currentRecipeString = name;
         dbUser.collection("recettes").document(name)
                 .set(recipe)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -120,6 +127,25 @@ public class FirebaseConnection {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("FIREBASE", "Error writing document", e);
+                    }
+                });
+    }
+
+
+    public static void addNoteToCurrentRecipe(String note) {
+        // Set the "isCapital" field of the city 'DC'
+        dbUser.collection("recettes").document(currentRecipeString)
+                .update("note", note)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
                     }
                 });
     }

@@ -12,10 +12,13 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import perso.myapplicationL.ui.main.FirebaseConnection;
+
 public class ShareNoteActivity extends AppCompatActivity implements View.OnClickListener {
 
     private BottomSheetDialog bottomSheetDialog;
     private RatingBar ratingbarNote;
+    private Button returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +46,20 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
                 Toast.makeText(getApplicationContext(), String.valueOf(getString(R.string.rating) + rating),Toast.LENGTH_LONG).show();
             }
         });
+        returnButton = findViewById(R.id.return_button);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseConnection.addNoteToCurrentRecipe(ratingbarNote.getRating() + "");
+                Intent intent = new Intent(ShareNoteActivity.this, DashBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
         EmailView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 String subjet = "Le bon poulet de dragon guerrier";
                 String body = "Partage de la recette d'un dragon guerrier";
@@ -81,7 +93,6 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
             @Override
 
             public void onClick(View view) {
-
                 Uri sms_uri = Uri.parse("smsto:0629318088");
                 Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
                 sms_intent.putExtra("sms_body", "Je te partage une recette guerrière");
