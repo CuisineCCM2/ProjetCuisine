@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import perso.myapplicationL.ui.main.FirebaseConnection;
 
 public class ShareNoteActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,11 +22,19 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
     private BottomSheetDialog bottomSheetDialog;
     private RatingBar ratingbarNote;
     private Button returnButton;
+    Intent intent;
+    JSONObject recipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_note);
+        intent = getIntent();
+        try {
+            recipe = new JSONObject(intent.getStringExtra("recipe"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         bottomSheetDialog = new BottomSheetDialog(ShareNoteActivity.this);
         View bottomSheetDialogView = getLayoutInflater().inflate(R.layout.dial_layout, null);
         bottomSheetDialog.setContentView(bottomSheetDialogView);
@@ -61,16 +72,34 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
-                String subjet = "Le bon poulet de dragon guerrier";
-                String body = "Partage de la recette d'un dragon guerrier";
+                String subjet = null;
+                String body = null;
+                try {
+                    subjet = "Les Furibards de la cuisine - " + recipe.getString("name");
+                    body = "Category : " + recipe.getString("category");
+                    body += "\nCalories : " + recipe.getString("calories") + "    Time : " + recipe.getString("time");
+                    body += "\nDescription : " + recipe.getString("description");
+                    body += "\n\nInstructions : " + recipe.getString("instruction");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 myIntent.putExtra(Intent.EXTRA_SUBJECT, subjet);
                 myIntent.putExtra(Intent.EXTRA_TEXT, body);
                 myIntent.setType("Text/plain");
-                startActivity(Intent.createChooser(myIntent, "Votre choix"));
+                startActivity(Intent.createChooser(myIntent, "Your choice"));
             }
         });
 
-        String textToShare = "Un Partage de recette guerrière ! #lemonstreoupas";
+        String textToShare = null;
+        try {
+            textToShare ="I'm sharing you the recipe '" + recipe.getString("name") + "' with the app Les Furibards de la cuisine !\n\n";
+            textToShare += "Category : " + recipe.getString("category");
+            textToShare += "\nCalories : " + recipe.getString("calories") + "    Time : " + recipe.getString("time");
+            textToShare += "\nDescription : " + recipe.getString("description");
+            textToShare += "\n\nInstructions : " + recipe.getString("instruction");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         final Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
@@ -95,12 +124,19 @@ public class ShareNoteActivity extends AppCompatActivity implements View.OnClick
             public void onClick(View view) {
                 Uri sms_uri = Uri.parse("smsto:0629318088");
                 Intent sms_intent = new Intent(Intent.ACTION_SENDTO, sms_uri);
-                sms_intent.putExtra("sms_body", "Je te partage une recette guerrière");
-                startActivity(sms_intent);
+                try {
+                    String text = "I'm sharing you the recipe '" + recipe.getString("name") + "' with the app Les Furibards de la cuisine !\n\n";
+                    text += "Category : " + recipe.getString("category");
+                    text += "\nCalories : " + recipe.getString("calories") + "    Time : " + recipe.getString("time");
+                    text += "\nDescription : " + recipe.getString("description");
+                    text += "\n\nInstructions : " + recipe.getString("instruction");
+                    sms_intent.putExtra("sms_body", text);
+                    startActivity(sms_intent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
-
-
     }
 
     @Override

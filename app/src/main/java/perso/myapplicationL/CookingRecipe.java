@@ -3,7 +3,6 @@ package perso.myapplicationL;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +16,6 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import perso.myapplicationL.ui.main.ApiSelectRequests;
 import perso.myapplicationL.ui.main.FirebaseConnection;
@@ -56,26 +52,6 @@ public class CookingRecipe extends AppCompatActivity {
             description.setText(recipe.getString("description"));
             time.setText(recipe.getString("time"));
             instruction.setText(recipe.getString("instruction"));
-            /*new Thread(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    try { Thread.sleep(1000); }
-                    catch (InterruptedException e) { e.printStackTrace(); }
-                    arrayIngredients = ApiSelectRequests.ingredientsList;
-                    Log.d("decasc6", "on sleep: " + arrayIngredients.toString());
-                    String ingredientsText = "";
-                    for(int i = 0; i < arrayIngredients.length(); i++) {
-                        try {
-                            ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + "/n";
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    ingredients.setText(ingredientsText);
-                }
-            }).start();*/
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -108,6 +84,7 @@ public class CookingRecipe extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent intent = new Intent(CookingRecipe.this, ShareNoteActivity.class);
+                intent.putExtra("recipe", recipe.toString());
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), getString(R.string.RecipeFinished), Toast.LENGTH_LONG).show();
             }
