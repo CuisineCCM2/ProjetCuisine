@@ -49,11 +49,5 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/id_tempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="changement de page oklm" />
-
 
 </LinearLayout>

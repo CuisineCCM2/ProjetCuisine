@@ -56,13 +56,50 @@
     <string name="MustAddingredient">You must add an ingredient !</string>
     <string name="limitingredient">You can not add more ingredients, limited to 5</string>
     <string-array name="array_quantities">
-        <item>Units</item>
-        <item>Kg</item>
-        <item>G</item>
-        <item>Pu</item>
-        <item>L</item>
-        <item>Ml</item>
-        <item>Cl</item>
+        <item>1-inch piece</item>
+        <item>10 oz jar</item>
+        <item>17-oz can</item>
+        <item>4-lb</item>
+        <item>8-oz package</item>
+        <item>9-inch</item>
+        <item>bn</item>
+        <item>c</item>
+        <item>cl</item>
+        <item>clove</item>
+        <item>Cloves</item>
+        <item>cn</item>
+        <item>cup</item>
+        <item>cups</item>
+        <item>ds</item>
+        <item>ears</item>
+        <item>g</item>
+        <item>head</item>
+        <item>lb</item>
+        <item>lg</item>
+        <item>md</item>
+        <item>medium</item>
+        <item>ml</item>
+        <item>null</item>
+        <item>ounces</item>
+        <item>oz</item>
+        <item>pinch</item>
+        <item>pk</item>
+        <item>pn</item>
+        <item>pt</item>
+        <item>qt</item>
+        <item>sl</item>
+        <item>sm</item>
+        <item>Sprig</item>
+        <item>stalk</item>
+        <item>stalks</item>
+        <item>Stick</item>
+        <item>tb</item>
+        <item>Teabags</item>
+        <item>teaspoon</item>
+        <item>teaspoons</item>
+        <item>ts</item>
+        <item>Whole</item>
+        <item>xl</item>
     </string-array>
     <string-array name="array_times">
         <item>Sélectionnez</item>

@@ -62,7 +62,12 @@ public class CookingRecipe extends AppCompatActivity {
                         String ingredientsText = "";
                         for(int i = 0; i < arrayIngredients.length(); i++) {
                             try {
-                                ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + "\n";
+                                if(arrayIngredients.getJSONObject(i).getString("unitname") == "null") {
+                                    ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + "\n";
+                                }
+                                else{
+                                    ingredientsText += arrayIngredients.getJSONObject(i).getString("name") + " " + arrayIngredients.getJSONObject(i).getString("quantity") + " " + arrayIngredients.getJSONObject(i).getString("unitname") + "\n";
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

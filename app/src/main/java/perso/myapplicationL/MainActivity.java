@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     new GenericSqliteDatabase(MainActivity.this);
                     Toast.makeText(MainActivity.this, getString(R.string.ContinueChoiceLogin), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, HorsConnexionMode.class);
+                    Intent intent = new Intent(MainActivity.this, DashBoardActivity.class);
                     startActivity(intent);
                 }
             });
